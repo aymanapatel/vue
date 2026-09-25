@@ -9,7 +9,7 @@ function increaseCount() {
 
 <template>
 
-<h1>Assignment 2: Events using Options API</h1>
+<h1>Assignment 2: Events using Composition API</h1>
 
 
 <!-- tag::v-on-options-api[] -->
