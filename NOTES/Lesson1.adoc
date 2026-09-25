@@ -1,0 +1,92 @@
+= Learning v1
+:toc:
+:icons: level
+
+== Vue Directives
+
+
+Similar to Angularjs (1.0), it has directive where it can be binded to.
+
+
+Example: 
+
+
+=== `v-if`` and `v-else`
+.v-if and v-else
+[source,vue]
+----
+include::../src/components/Assignment1.vue[tag=v-if-else-directive]
+----
+
+
+=== `v-show`
+This is similar to `v-if`, but it has a higher initial rendering cost but lower toggle cost compared to `v-if`. `v-show` is used in conjunction with CSS `display: none`. It is typically used when you want to toggle an element very often. 
+
+
+=== `v-for`
+
+.v-for
+[source,vue]
+----
+include::../src/components/Assignment1.vue[tag=v-for-directive]
+----
+
+
+== Event Handling
+
+
+
+
+== Vue and React
+
+
+[cols="1,2,2",options="header"]
+|===
+|Job |Vue |React
+
+|Local state
+|+ref(0)+
+Read +.value+ in script. The template unwraps it.
+|+useState(0)+
+
+|Box that does not re-render
+|+shallowRef(null)+ or a template ref
+|+useRef(null)+
+Vue +ref()+ is not this. It is closer to +useState+.
+
+|Derived value
+|+computed(() => count.value * 2)+
+|+useMemo(() => count * 2, [count])+
++computed+ tracks what you read. +useMemo+ uses the list you pass.
+
+|Run when a source changes
+|+watch(count, () => {})+
+|+useEffect(() => {}, [count])+
++watch+ defaults to before the render. Pass +{ flush: 'post' }+ to run after it, which is closer to +useEffect+.
+
+|Run when used values change
+|+watchEffect(() => {})+
+|+useEffect(() => {})+
+Same flush difference as +watch+.
+
+|Mount and cleanup
+|+onMounted(() => {})+
++onUnmounted(() => {})+
+|+useEffect(() => { return () => {} }, [])+
+
+|Stable callback
+|A function in +<script setup>+ is already stable for that instance.
+|+useCallback(fn, [deps])+
+
+|Shared value
+|+provide('key', value)+
++inject('key')+
+|+createContext(defaultValue)+
++useContext(Context)+
+|===
+
+
+
+
+
+
